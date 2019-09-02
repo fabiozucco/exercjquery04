@@ -23,26 +23,26 @@ $(document).ready(function () {
     for (var i = 0; i < 999; i++) {
     	$("#teste").html(i)
     	// console.info("Item "+ i + " produto", cart[i].name, cart[i].price);
-    	$("#result").append('<li id="'+ i +'">Produto: '+ cart[i].name + '</br>Preço :' + cart[i].price.toLocaleString() + '</li>' + '<input class="btn btn-primary" onClick="onReset(' + i + '")"id="reset' + i + '" type="reset" value="Excluir">')
+    	$("#result").append('<li id="'+ i +'">Produto: '+ cart[i].name + '</br>Preço :' + cart[i].price + '</li>' + '<input class="btn btn-primary" onClick="onReset(' + i + ')" "id="reset' + i + '" type="reset" value="Excluir">')
     }
   }
 })
 
-$('#reset').click(function () {
-	var checkDiv = $(this).next()
-	if (checkDiv.attr("id") === )
-	cart.splice($.inArray(itemtoRemove, arr),1);
-});
+// $('#reset').click(function () {
+// 	var checkDiv = $(this).next()
+// 	if (checkDiv.attr("id") === )
+// 	cart.splice($.inArray(itemtoRemove, arr),1);
+// });
 
-function onReset(value) {	
-
+function onReset(value) {
+  var cart = sessionStorage.getItem("cart");
+  cart = JSON.parse(cart);
+  var removeItem = cart[value];
+  var newcart = [];
+  newcart = cart.splice($.inArray(removeItem, cart), 1);
+  location.reload();
+  return sessionStorage.setItem("cart", JSON.stringify(cart));
 }
-
-$(document).ready(function(){
-    var arr = ["jQuery","JavaScript","HTML","Ajax","Css"];
-    var itemtoRemove = "HTML";
-    arr.splice(1,1);
-});​
 
 
 // function addProduct(target) {
