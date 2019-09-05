@@ -9,9 +9,6 @@
     <div class="container">
       <form class="mt-4" method="post">
         <div class="row ">
-        	<div>
-        		<p id="teste"></p>	
-        	</div>
             <div class="col-md-12">
               <label>Produto</label>
               <input type="text" name="product" value="" id="product" class="form-control">
@@ -20,16 +17,24 @@
               <label>Preço</label>
               <input type="text" name="price" value="" id="price" class="form-control">
             </div>
+            <div class="col-md-12">
+              <label>URL</label>
+              <input type="text" name="url" value="" id="url" class="form-control">
+            </div>
             <div class="col-md-12 mt-4">
               <button type="submit" class="btn btn-primary" name="button">Enviar</button>
             </div>
         </div>
       </form>
       <div class="jumbotron mt-4" id="result-container">
-        <h1>Meu carrinho de compras</h1>
+        <h1>Meu carrinho de compras: <p id="teste"></p></h1>
         <ul id="result" class="mt-4">
         </ul>
-      </div>
+     </div>
+     <div class="jumbotron mt-1" id="result-container">
+        <h3 style="text-align: right;">Total</h3>
+       		<h3 id="total" style="text-align: right;"></h3>
+     </div>
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>    

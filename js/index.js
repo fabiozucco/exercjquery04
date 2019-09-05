@@ -11,19 +11,25 @@ $(document).ready(function () {
   $('form').submit(function () {
       var productName = $('#product').val();
       var productPrice = $('#price').val();
+      var url = $('#url').val();
       addToCart({
         name: productName,
-        price: productPrice
+        price: productPrice,
+        url: url
       });
   });
 
   var cart = sessionStorage.getItem("cart");
   if (cart !== null) {
     cart = JSON.parse(cart);
+    var total = 0;
     for (var i = 0; i < 999; i++) {
-    	$("#teste").html(i)
+    	$("#teste").html("Itens: " + i)
     	// console.info("Item "+ i + " produto", cart[i].name, cart[i].price);
-    	$("#result").append('<li id="'+ i +'">Produto: '+ cart[i].name + '</br>Preço :' + cart[i].price + '</li>' + '<input class="btn btn-primary" onClick="onReset(' + i + ')" "id="reset' + i + '" type="reset" value="Excluir">')
+    	$("#result").append('<img src="'+ cart[i].url +'" height="100px" width="100px"><li id="'+ i +'">Produto: '+ cart[i].name + '</br>Preço :' + cart[i].price + '</li>'  + '<input class="btn btn-primary" onClick="onReset(' + i + ')" "id="reset' + i + '" type="reset" value="Excluir"></br></br>')
+      total += parseFloat(cart[i].price)
+      $("#total").html("R$ "+total.toLocaleString())
+      console.info(cart)
     }
   }
 })
